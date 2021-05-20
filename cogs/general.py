@@ -1,6 +1,7 @@
 import os
 import random
 import datetime
+import asyncio
 import discord
 from discord.ext import commands
 
@@ -57,7 +58,6 @@ class General(commands.Cog):
         embed = discord.Embed(color=0x2ecc71, description='🥀',
                               timestamp=datetime.datetime.utcnow())
         await self.bot.get_channel(int(os.getenv('LOG_CHANNEL'))).send(embed=embed)
-        await self.bot.close()
         quit()
 
     @commands.command()
