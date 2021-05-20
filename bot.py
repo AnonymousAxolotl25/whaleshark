@@ -7,17 +7,11 @@ import asyncio
 from discord.ext import commands
 from discord import Webhook, RequestsWebhookAdapter
 
-from pymongo import MongoClient
-client = MongoClient(os.getenv('MONGODB_URI'))
-
 logging.basicConfig(level=logging.ERROR)
 
 bot = commands.Bot(commands.when_mentioned_or('ws'), case_insensitive=True,
                    strip_after_prefix=True, help_command=None, max_messages=2000,
                    activity=discord.Game(name="ws help"))
-
-database = client['WhaleSharkDB']
-usersCollection = database['users']
 
 @bot.event
 async def on_ready():
